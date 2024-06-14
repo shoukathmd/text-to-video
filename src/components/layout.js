@@ -4,7 +4,7 @@ import "./css/style.css";
 import "./css/general.css";
 import "./css/mediaqueries.css";
 import { generateVideo, getVideo } from "../api/synthesiaApi";
-import { generateScript } from "../api/openAiApi";
+import { generateScript } from "../api/openaiApi";
 import VideoDisplay from "./videodisplay";
 
 function Layout1() {
@@ -24,11 +24,13 @@ function Layout1() {
   const [videoStatus, setVideoStatus] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  /**
+   * Handle input changes and validate fields.
+   * @param {Event} e - The event object from the input change.
+   */
   function handleChange(e) {
     const { name, value } = e.target;
-    setData((prevVal) => {
-      return { ...prevVal, [name]: value };
-    });
+    setData((prevVal) => ({ ...prevVal, [name]: value }));
 
     // Validate the input length
     if (
@@ -52,6 +54,13 @@ function Layout1() {
     }
   }
 
+  /**
+   * Generate the prompt for video script creation.
+   * @param {string} companyInfo - Information about the company.
+   * @param {string} productInfo - Information about the product.
+   * @param {string} targetGroupProfile - Profile of the target group.
+   * @returns {string} The generated prompt.
+   */
   function generateVideoScriptPrompt(
     companyInfo,
     productInfo,
@@ -68,6 +77,10 @@ Target Group Profile: ${targetGroupProfile}
 The script should be engaging, informative, and tailored to the target group profile. Ensure the script highlights the key features of the product and its benefits to the target audience. The tone should be professional yet approachable.`;
   }
 
+  /**
+   * Check the status of the video generation process.
+   * @param {string} videoId - The ID of the video to check.
+   */
   async function checkVideoStatus(videoId) {
     const intervalId = setInterval(async () => {
       const response = await getVideo(videoId);
@@ -81,6 +94,9 @@ The script should be engaging, informative, and tailored to the target group pro
     }, 5000); // Check every 5 seconds
   }
 
+  /**
+   * Handle the process of generating a video.
+   */
   async function handleGenerateVideo() {
     const { companyInfo, productInfo, targetGroupProfile } = data;
 
@@ -122,6 +138,9 @@ The script should be engaging, informative, and tailored to the target group pro
     }
   }
 
+  /**
+   * Handle the video download process.
+   */
   function downloadVideo() {
     const videoElement = document.querySelector(".cta-img-box video");
     const videoUrl = videoElement.src;
