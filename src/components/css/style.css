@@ -99,3 +99,22 @@
 .inputs {
   height: 5rem;
 }
+
+/* Add this to your CSS file, if not already present */
+.loading-box {
+  color: blue;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: auto;
+}
+
+/* Add this to your CSS file */
+.error {
+  color: red;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
