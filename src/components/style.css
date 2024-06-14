@@ -1,0 +1,101 @@
+/**************************/
+/* CTA SECTION */
+/**************************/
+
+.section-cta {
+  padding: 0.5rem 0 0.5rem;
+}
+
+.cta {
+  display: grid;
+  grid-template-columns: 40fr 60fr;
+
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
+  border-radius: 11px;
+
+  background-color: rgb(167, 227, 167);
+  overflow: hidden;
+}
+
+.cta-text-box {
+  padding: 4.8rem 6.4rem 6.4rem 6.4rem;
+  color: black;
+}
+
+.cta .heading-secondary {
+  color: inherit;
+  margin-bottom: 3.2rem;
+}
+
+.cta-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  margin-bottom: 4.8rem;
+}
+
+.cta-img-box {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  gap: 2rem;
+}
+
+.cta-img-box video {
+  width: 100%;
+  border-radius: 1rem;
+  display: cover;
+}
+
+.cta-img-box svg {
+  stroke: black;
+  cursor: pointer;
+}
+
+.download-icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  align-self: end;
+}
+
+.cta-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 3.2rem;
+  row-gap: 2.4rem;
+}
+
+.cta-form label {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.cta-form textarea,
+.cta-form select {
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.8rem;
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  background-color: #fdf2e9;
+  border-radius: 9px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cta-form textarea::placeholder {
+  color: #aaa;
+}
+
+.cta *:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
+}
+
+.inputs {
+  height: 5rem;
+}
