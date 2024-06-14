@@ -8,7 +8,7 @@ export const getVideo = async (videoId) => {
   try {
     const response = await api.get(`${URLS.makeVideo}/${videoId}`, {
       headers: {
-        Authorization: process.env.SYNTHESIA_API_KEY,
+        Authorization: process.env.REACT_APP_SYNTHESIA_API_KEY,
         "Content-Type": "application/json",
       },
     });
@@ -34,7 +34,7 @@ export const generateVideo = async (script) => {
       },
       {
         headers: {
-          Authorization: process.env.SYNTHESIA_API_KEY,
+          Authorization: process.env.REACT_APP_SYNTHESIA_API_KEY,
           "Content-Type": "application/json",
         },
       }

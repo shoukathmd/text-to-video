@@ -48,7 +48,8 @@ function Layout1() {
       visibility: "public",
       input: [
         {
-          scriptText: "Hello world, I am AI generated video from Chima",
+          scriptText:
+            "Hello, World! This is my first synthetic video, made with the Synthesia API!",
           avatar: "anna_costume1_cameraA",
           background: "green_screen",
           title: "Personalized outbound video for sales",
@@ -57,7 +58,9 @@ function Layout1() {
     };
     try {
       console.log("Post call");
-      const response = await generateVideo(samplePostBody);
+      const response = await generateVideo(
+        "Hello, World! This is my first synthetic video, made with the Synthesia API!"
+      );
       console.log(response);
       setVideoResponse(response);
       localStorage.setItem("videoResponse", JSON.stringify(response));
@@ -130,7 +133,7 @@ function Layout1() {
             <div className="cta-img-box" role="video">
               {loading ? (
                 <div className="loading-box">Generating video...</div>
-              ) : freshLoad && !videoResponse ? (
+              ) : freshLoad && videoResponse ? (
                 <div>
                   <video
                     src="https://synthesia-ttv-data.s3-eu-west-1.amazonaws.com/video_data/3aa0c5fc-707d-4e66-a34d-a73e7df919a6/transfers/rendered_video.mp4"
@@ -139,7 +142,7 @@ function Layout1() {
                     autoPlay
                     muted
                   ></video>
-                  {/* <p>
+                  <p>
                     Video URL:{" "}
                     <a
                       href={videoResponse.download}
@@ -148,7 +151,7 @@ function Layout1() {
                     >
                       {videoResponse.download}
                     </a>
-                  </p> */}
+                  </p>
                 </div>
               ) : (
                 videoResponse?.download && (
