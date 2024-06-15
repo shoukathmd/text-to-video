@@ -13,7 +13,6 @@
 - [Code Overview](#code-overview)
 - [Challenges and Solutions](#challenges-and-solutions)
 - [Future Improvements](#future-improvements)
-- [License](#license)
 
 ## Features
 
