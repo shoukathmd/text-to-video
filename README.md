@@ -1,71 +1,116 @@
-# Getting Started with Create React App
+# Personalized Outbound Video Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
+ The application leverages the Synthesia API and OpenAI to create personalized outbound videos based on user input, demonstrating a practical use case of integrating AI capabilities into a web application.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Introduction](#introduction)
+- [Features](#features)
+- [Setup and Installation](#setup-and-installation)
+- [Usage](#usage)
+- [Deployment](#deployment)
+- [Code Overview](#code-overview)
+- [Challenges and Solutions](#challenges-and-solutions)
+- [Future Improvements](#future-improvements)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Responsive front-end interface for user input
+- Integration with the Synthesia API for video generation
+- AI-driven script generation using OpenAI's GPT-3.5-turbo model
+- Video download functionality as an MP4 file
+- Deployment on Vercel for public accessibility
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup and Installation
 
-### `npm test`
+1. **Clone the Repository**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    ```bash
+    git clone https://github.com/shoukathmd/text-to-video.git
+    cd personalized-outbound-video-generator
+    ```
 
-### `npm run build`
+2. **Install Dependencies**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ```bash
+    npm install
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Environment Variables**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    Create a `.env` file in the root directory and add the following:
 
-### `npm run eject`
+    ```env
+    REACT_APP_SYNTHESIA_API_KEY=746ee48b3c0121d39170d3c01757066e
+    REACT_APP_OPENAI_API_KEY=your_openai_api_key
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Run the Application**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```bash
+    npm start
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Open the application in your web browser.
+2. Enter the Company Info, Product Info, and Target Group Profile in the respective fields.
+3. Click the "Generate Video" button.
+4. Wait for the video to be generated.
+5. Once the video is ready, you can view and download it as an MP4 file.
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The application is deployed on Vercel. You can access it [here](https://text-to-video-one.vercel.app/).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To deploy your own version:
 
-### Code Splitting
+1. Create a Vercel account if you don't have one.
+2. Link your GitHub repository to Vercel.
+3. Set up the necessary environment variables in the Vercel project settings.
+4. Deploy the project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Code Overview
 
-### Analyzing the Bundle Size
+### Components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- `Layout1.jsx`: Main component handling user input and video generation logic.
+- `VideoDisplay.js`: Component responsible for displaying the video or a placeholder image during loading.
 
-### Making a Progressive Web App
+### API Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Synthesia API**: Used for video generation based on the script.
+- **OpenAI API**: Generates the script from the user input.
 
-### Advanced Configuration
+### Key Functions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `generateVideoScriptPrompt`: Generates the prompt for the OpenAI API.
+- `generateScript`: Calls the OpenAI API to generate a script.
+- `generateVideo`: Calls the Synthesia API to generate the video.
+- `checkVideoStatus`: Polls the Synthesia API to check the status of the video generation.
 
-### Deployment
+## Challenges and Solutions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Challenge: Integrating Multiple APIs
 
-### `npm run build` fails to minify
+Integrating both the OpenAI and Synthesia APIs required careful handling of asynchronous operations and error handling. Ensuring that the script was generated before calling the Synthesia API was crucial.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# text-to-video
+**Solution**: Implemented robust error handling and fallback mechanisms. If the OpenAI API fails to generate a script, the application uses the `productInfo` as a fallback script.
+
+### Challenge: Responsive and User-Friendly UI
+
+Creating a responsive and intuitive UI that provides a seamless user experience across different devices was a priority.
+
+**Solution**: Used modern CSS techniques and media queries to ensure responsiveness. Conducted user testing to gather feedback and refine the UI.
+
+## Future Improvements
+
+- Enhance error handling to provide more detailed feedback to users.
+- Implement user authentication to save and manage generated videos.
+- Add more customization options for video generation.
+- Integrate with additional AI models for diverse script generation capabilities.
+- Refactor the codebase to adhere more closely to SOLID principles, ensuring better maintainability, scalability, and readability.
+
+---
