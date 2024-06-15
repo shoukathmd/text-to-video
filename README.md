@@ -37,7 +37,7 @@ Integrating both the OpenAI and Synthesia APIs required careful handling of asyn
 ### Challenge: Handling Rate Limits with Synthesia API
 While integrating with the Synthesia API, I encountered a 429 response issue, indicating rate limiting. This hindered the ability to fully test the application.
 
-Solution: Implemented retry logic and optimized API call frequency to handle rate limits more gracefully. However, due to these constraints, full testing of the application was limited.
+Solution: However, due to these constraints, full testing of the application was limited.
 
 ### Challenge: Responsive and User-Friendly UI
 
