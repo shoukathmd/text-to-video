@@ -24,5 +24,6 @@ export const generateScript = async (prompt) => {
     return response.data.choices[0].text;
   } catch (error) {
     console.error("Error generating script:", error);
+    return null; // Return null in case of an error
   }
 };

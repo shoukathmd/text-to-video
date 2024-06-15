@@ -35,7 +35,7 @@ function Layout1() {
     // Validate the input length
     if (
       (name === "companyInfo" || name === "productInfo") &&
-      value.length < 50
+      value.length < 10
     ) {
       setErrors((prevErrors) => ({
         ...prevErrors,
@@ -67,14 +67,14 @@ function Layout1() {
     targetGroupProfile
   ) {
     return `Create a video script for a synthetic video using Synthesia. The video should include the following information:
-
-Company Information: ${companyInfo}
-
-Product Information: ${productInfo}
-
-Target Group Profile: ${targetGroupProfile}
-
-The script should be engaging, informative, and tailored to the target group profile. Ensure the script highlights the key features of the product and its benefits to the target audience. The tone should be professional yet approachable.`;
+  
+  Company Information: ${companyInfo}
+  
+  Product Information: ${productInfo}
+  
+  Target Group Profile: ${targetGroupProfile}
+  
+  The script should be engaging, informative, and tailored to the target group profile. Ensure the script highlights the key features of the product and its benefits to the target audience. The entire script should be concise and should not be longer than 15 seconds when read aloud. The tone should be professional yet approachable.`;
   }
 
   /**
@@ -123,7 +123,10 @@ The script should be engaging, informative, and tailored to the target group pro
 
     try {
       // Call the OpenAI API to generate the script
-      const script = await generateScript(videoScriptPrompt);
+      let script = await generateScript(videoScriptPrompt);
+      if (!script) {
+        script = productInfo; // Fallback to productInfo if no script is returned
+      }
       console.log("Generated Script:", script);
 
       // Call the Synthesia API to generate the video with the script
